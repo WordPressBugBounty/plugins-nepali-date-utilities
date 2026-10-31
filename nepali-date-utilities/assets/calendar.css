@@ -1,0 +1,210 @@
+/* Nepali Date Utilities — Post Calendar */
+
+.ndu-post-calendar {
+	--ndu-cal-accent: #c62828;
+	--ndu-cal-bg: #fff;
+	--ndu-cal-muted: #8c8f94;
+	--ndu-cal-cell: #f6f7f7;
+	--ndu-cal-border: #dcdcde;
+	box-sizing: border-box;
+	max-width: 520px;
+	margin: 0 auto;
+	padding: 16px;
+	background: var(--ndu-cal-bg);
+	border: 1px solid var(--ndu-cal-border);
+	border-radius: 12px;
+	font-family: inherit;
+	color: #1d2327;
+}
+
+.ndu-post-calendar *,
+.ndu-post-calendar *::before,
+.ndu-post-calendar *::after {
+	box-sizing: border-box;
+}
+
+.ndu-cal-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 14px;
+}
+
+.ndu-cal-title {
+	flex: 1;
+	text-align: center;
+	font-size: 1.15rem;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+
+.ndu-cal-month {
+	margin-right: 0.35em;
+}
+
+.ndu-cal-nav {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	padding: 0;
+	border: 1px solid var(--ndu-cal-border);
+	border-radius: 999px;
+	background: #fff;
+	color: #1d2327;
+	font-size: 1.4rem;
+	line-height: 1;
+	cursor: pointer;
+	transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.ndu-cal-nav:hover,
+.ndu-cal-nav:focus {
+	border-color: var(--ndu-cal-accent);
+	color: var(--ndu-cal-accent);
+	outline: none;
+}
+
+.ndu-cal-weekdays,
+.ndu-cal-grid {
+	display: grid;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+	gap: 6px;
+}
+
+.ndu-cal-weekdays {
+	margin-bottom: 6px;
+}
+
+.ndu-cal-weekday {
+	text-align: center;
+	font-size: 0.78rem;
+	font-weight: 700;
+	color: var(--ndu-cal-accent);
+	padding: 4px 0;
+}
+
+.ndu-cal-day {
+	position: relative;
+	min-height: 64px;
+	padding: 8px 4px 6px;
+	border-radius: 10px;
+	background: var(--ndu-cal-cell);
+	text-align: center;
+	transition: box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.ndu-cal-day.is-outside {
+	background: transparent;
+	opacity: 0.45;
+}
+
+.ndu-cal-day.is-today {
+	box-shadow: inset 0 0 0 2px var(--ndu-cal-accent);
+	background: #fff;
+}
+
+.ndu-cal-day.has-posts {
+	background: #fff;
+}
+
+.ndu-cal-bs {
+	display: block;
+	font-size: 1.05rem;
+	font-weight: 700;
+	line-height: 1.2;
+	color: #1d2327;
+}
+
+.ndu-cal-day.is-outside .ndu-cal-bs {
+	color: var(--ndu-cal-muted);
+}
+
+.ndu-cal-eng {
+	display: block;
+	margin-top: 2px;
+	font-size: 0.65rem;
+	letter-spacing: 0.04em;
+	color: var(--ndu-cal-muted);
+	text-transform: uppercase;
+}
+
+.ndu-cal-dot {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	margin-top: 4px;
+	border-radius: 50%;
+	background: var(--ndu-cal-accent);
+}
+
+.ndu-cal-posts {
+	list-style: none;
+	margin: 6px 0 0;
+	padding: 0;
+	text-align: left;
+}
+
+.ndu-cal-posts li {
+	margin: 0 0 2px;
+	padding: 0;
+	line-height: 1.2;
+}
+
+.ndu-cal-posts a {
+	display: block;
+	padding: 2px 4px;
+	border-radius: 4px;
+	font-size: 0.62rem;
+	color: var(--ndu-cal-accent);
+	text-decoration: none;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ndu-cal-posts a:hover,
+.ndu-cal-posts a:focus {
+	background: color-mix(in srgb, var(--ndu-cal-accent) 12%, transparent);
+	outline: none;
+}
+
+.ndu-post-calendar.is-loading {
+	opacity: 0.55;
+	pointer-events: none;
+}
+
+.ndu-calendar-error {
+	color: #b32d2e;
+}
+
+@media (max-width: 480px) {
+	.ndu-post-calendar {
+		padding: 12px;
+	}
+
+	.ndu-cal-day {
+		min-height: 54px;
+		padding: 6px 2px;
+	}
+
+	.ndu-cal-bs {
+		font-size: 0.95rem;
+	}
+
+	.ndu-cal-posts {
+		display: none;
+	}
+
+	.ndu-cal-day.has-posts::after {
+		content: '';
+		display: inline-block;
+		width: 5px;
+		height: 5px;
+		margin-top: 3px;
+		border-radius: 50%;
+		background: var(--ndu-cal-accent);
+	}
+}

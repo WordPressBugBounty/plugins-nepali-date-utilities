@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "ndu/today-date",
+  "title": "Nepali Today Date",
+  "category": "widgets",
+  "icon": "calendar-alt",
+  "description": "Display today's date in Nepali (Bikram Sambat).",
+  "keywords": ["nepali", "date", "bs", "today"],
+  "textdomain": "nepali-date-utilities",
+  "attributes": {
+    "format": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["left", "center", "right"],
+    "className": true
+  }
+}

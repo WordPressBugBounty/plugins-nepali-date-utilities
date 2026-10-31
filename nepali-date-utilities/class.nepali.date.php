@@ -89,28 +89,29 @@ class Nepali_Date
         80 => array(2080, 31, 32, 31, 32, 31, 30, 30, 30, 29, 29, 30, 30),
         81 => array(2081, 31, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31),
         82 => array(2082, 31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30),
-        83 => array(2083, 31, 31, 32, 31, 31, 30, 30, 30, 29, 30, 30, 30),
-        84 => array(2084, 31, 31, 32, 31, 31, 30, 30, 30, 29, 30, 30, 30),
-        85 => array(2085, 31, 32, 31, 32, 30, 31, 30, 30, 29, 30, 30, 30),
-        86 => array(2086, 30, 32, 31, 32, 31, 30, 30, 30, 29, 30, 30, 30),
-        87 => array(2087, 31, 31, 32, 31, 31, 31, 30, 30, 29, 30, 30, 30),
-        88 => array(2088, 30, 31, 32, 32, 30, 31, 30, 30, 29, 30, 30, 30),
-        89 => array(2089, 30, 32, 31, 32, 31, 30, 30, 30, 29, 30, 30, 30),
-        90 => array(2090, 30, 32, 31, 32, 31, 30, 30, 30, 29, 30, 30, 30),
-        91 => array(2091, 31, 31, 32, 31, 31, 31, 30, 30, 29, 30, 30, 30),
-        92 => array(2092, 30, 31, 32, 32, 31, 30, 30, 30, 29, 30, 30, 30),
-        93 => array(2093, 30, 32, 31, 32, 31, 30, 30, 30, 29, 30, 30, 30),
-        94 => array(2094, 31, 31, 32, 31, 31, 30, 30, 30, 29, 30, 30, 30),
-        95 => array(2095, 31, 31, 32, 31, 31, 31, 30, 29, 30, 30, 30, 30),
-        96 => array(2096, 30, 31, 32, 32, 31, 30, 30, 29, 30, 29, 30, 30),
-        97 => array(2097, 31, 32, 31, 32, 31, 30, 30, 30, 29, 30, 30, 30),
-        98 => array(2098, 31, 31, 32, 31, 31, 31, 29, 30, 29, 30, 29, 31),
-        99 => array(2099, 31, 32, 31, 32, 31, 30, 30, 30, 29, 29, 30, 31)
+        83 => array(2083, 31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30),
+        84 => array(2084, 31, 32, 31, 32, 31, 30, 30, 30, 29, 29, 30, 31),
+        85 => array(2085, 30, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31),
+        86 => array(2086, 31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30),
+        87 => array(2087, 31, 31, 32, 32, 31, 30, 30, 29, 30, 29, 30, 30),
+        88 => array(2088, 31, 32, 31, 32, 31, 30, 30, 30, 29, 29, 30, 31),
+        89 => array(2089, 30, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31),
+        90 => array(2090, 31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30),
+        91 => array(2091, 31, 31, 32, 32, 31, 30, 30, 29, 30, 29, 30, 30),
+        92 => array(2092, 31, 32, 31, 32, 31, 30, 30, 30, 29, 29, 30, 31),
+        93 => array(2093, 31, 31, 31, 32, 31, 31, 29, 30, 30, 29, 29, 31),
+        94 => array(2094, 31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30),
+        95 => array(2095, 31, 31, 32, 32, 31, 30, 30, 29, 30, 29, 30, 30),
+        96 => array(2096, 31, 32, 31, 32, 31, 30, 30, 30, 29, 29, 30, 31),
+        97 => array(2097, 31, 31, 31, 32, 31, 31, 29, 30, 30, 29, 30, 30),
+        98 => array(2098, 31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30),
+        99 => array(2099, 31, 31, 32, 32, 31, 30, 30, 29, 30, 29, 30, 30)
     );
 
     private $_nep_date = array('year' => '', 'month' => '', 'date' => '', 'day' => '', 'nmonth' => '', 'num_day' => '');
     private $_eng_date = array('year' => '', 'month' => '', 'date' => '', 'day' => '', 'emonth' => '', 'num_day' => '');
     public $debug_info = "";
+    public $last_error = '';
 
     /**
      * Return day
@@ -256,7 +257,7 @@ class Nepali_Date
     private function _is_in_range_eng($yy, $mm, $dd)
     {
         if ($yy < 1944 || $yy > 2033) {
-            return 'Supported only between 1944-2022';
+            return 'Supported only between AD 1944-2033';
         }
         if ($mm < 1 || $mm > 12) {
             return 'Error! month value can be between 1-12 only';
@@ -264,7 +265,7 @@ class Nepali_Date
         if ($dd < 1 || $dd > 31) {
             return 'Error! day value can be between 1-31 only';
         }
-        return TRUE;
+        return true;
     }
 
     /**
@@ -273,20 +274,20 @@ class Nepali_Date
      * @param int $yy
      * @param int $mm
      * @param int $dd
-     * @return bool
+     * @return bool|string
      */
     private function _is_in_range_nep($yy, $mm, $dd)
     {
-        if ($yy < 2000 || $yy > 2089) {
-            return 'Supported only between 2000-2089';
+        if ($yy < 2000 || $yy > 2099) {
+            return 'Supported only between BS 2000-2099';
         }
         if ($mm < 1 || $mm > 12) {
             return 'Error! month value can be between 1-12 only';
         }
         if ($dd < 1 || $dd > 32) {
-            return 'Error! day value can be between 1-31 only';
+            return 'Error! day value can be between 1-32 only';
         }
-        return TRUE;
+        return true;
     }
 
     /**
@@ -314,20 +315,22 @@ class Nepali_Date
     }
 
     /**
-     * currently can only calculate the date between AD 1944-2033...
+     * Convert English (AD) date to Nepali (BS). Supported AD 1944-2033.
      *
      * @param int $yy
      * @param int $mm
      * @param int $dd
-     * @return array
+     * @return array|false
      */
     public function eng_to_nep($yy, $mm, $dd)
     {
-        // Check for date range
+        $this->last_error = '';
         $chk = $this->_is_in_range_eng($yy, $mm, $dd);
-        if ($chk !== TRUE) {
-            die($chk);
-        } else {
+        if ($chk !== true) {
+            $this->last_error = $chk;
+            return false;
+        }
+
             // Month data.
             $month = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
 
@@ -410,19 +413,20 @@ class Nepali_Date
             $this->_nep_date['nmonth'] = $this->_get_nepali_month($m);
             $this->_nep_date['num_day'] = $numDay;
             return $this->_nep_date;
-        }
     }
 
     /**
-     * Currently can only calculate the date between BS 2000-2089
+     * Convert Nepali (BS) date to English (AD). Supported BS 2000-2099.
      *
      * @param int $yy
      * @param int $mm
      * @param int $dd
-     * @return array
+     * @return array|false
      */
     public function nep_to_eng($yy, $mm, $dd)
     {
+        $this->last_error = '';
+
         $def_eyy = 1943;
         $def_emm = 4;
         $def_edd = 14 - 1;    // initial english date.
@@ -468,11 +472,12 @@ class Nepali_Date
             30,
             31
         );
-        // Check for date range
         $chk = $this->_is_in_range_nep($yy, $mm, $dd);
-        if ($chk !== TRUE) {
-            die($chk);
-        } else {
+        if ($chk !== true) {
+            $this->last_error = $chk;
+            return false;
+        }
+
             // Count total days in-terms of year
             for ($i = 0; $i < ($yy - $def_nyy); $i++) {
                 for ($j = 1; $j <= 12; $j++) {
@@ -520,33 +525,73 @@ class Nepali_Date
             $this->_eng_date['nmonth'] = $this->_get_english_month($m);
             $this->_eng_date['num_day'] = $numDay;
             return $this->_eng_date;
-        }
     }
 
-    function convert_to_nepali_number($str)
+    /**
+     * Convert ASCII digits to Devanagari Unicode numerals.
+     *
+     * @param string|int $str
+     * @return string
+     */
+    public function convert_to_nepali_number($str)
     {
         $str = strval($str);
-        $array = array(
-            0 => '&#2406;',
-            1 => '&#2407;',
-            2 => '&#2408;',
-            3 => '&#2409;',
-            4 => '&#2410;',
-            5 => '&#2411;',
-            6 => '&#2412;',
-            7 => '&#2413;',
-            8 => '&#2414;',
-            9 => '&#2415;',
-            /*'.'=>'&#2404;'*/
+        $map = array(
+            '0' => '०',
+            '1' => '१',
+            '2' => '२',
+            '3' => '३',
+            '4' => '४',
+            '5' => '५',
+            '6' => '६',
+            '7' => '७',
+            '8' => '८',
+            '9' => '९',
         );
-        $utf = "";
-        $cnt = strlen($str);
-        for ($i = 0; $i < $cnt; $i++) {
-            if (!isset($array[$str[$i]])) {
-                $utf .= $str[$i];
-            } else
-                $utf .= $array[$str[$i]];
+        return strtr($str, $map);
+    }
+
+    /**
+     * Days in a BS month.
+     *
+     * @param int $year  BS year (2000-2099).
+     * @param int $month BS month (1-12).
+     * @return int|false
+     */
+    public function days_in_month($year, $month)
+    {
+        $year  = (int) $year;
+        $month = (int) $month;
+        if ($year < 2000 || $year > 2099 || $month < 1 || $month > 12) {
+            $this->last_error = 'Invalid BS year or month';
+            return false;
         }
-        return $utf;
+        $index = $year - 2000;
+        if (!isset($this->_bs[$index][$month])) {
+            return false;
+        }
+        return (int) $this->_bs[$index][$month];
+    }
+
+    /**
+     * Nepali month name (1-12).
+     *
+     * @param int $month Month number.
+     * @return string|false
+     */
+    public function get_nepali_month_name($month)
+    {
+        return $this->_get_nepali_month((int) $month);
+    }
+
+    /**
+     * English month name (1-12).
+     *
+     * @param int $month Month number.
+     * @return string|false
+     */
+    public function get_english_month_name($month)
+    {
+        return $this->_get_english_month((int) $month);
     }
 }

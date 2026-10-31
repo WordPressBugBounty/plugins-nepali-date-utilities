@@ -1,0 +1,189 @@
+/* Nepali Date Utilities — admin settings */
+
+.ndu-admin {
+	max-width: 1200px;
+	margin-top: 12px;
+}
+
+.ndu-admin .ndu-tabs {
+	margin-bottom: 16px;
+}
+
+.ndu-layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 300px;
+	gap: 20px;
+	align-items: start;
+}
+
+.ndu-layout.ndu-layout--single {
+	grid-template-columns: 1fr;
+}
+
+.ndu-layout.ndu-layout--calendar {
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.ndu-layout.ndu-layout--calendar .ndu-sidebar {
+	min-width: 0;
+}
+
+.ndu-layout.ndu-layout--calendar .ndu-calendar-preview-card .ndu-post-calendar {
+	max-width: 560px;
+}
+
+.ndu-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 16px 20px 20px;
+	margin-bottom: 16px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.ndu-card h2 {
+	margin: 0 0 12px;
+	padding: 0;
+	font-size: 1.1em;
+}
+
+.ndu-card .form-table th {
+	padding-left: 0;
+	width: 200px;
+}
+
+.ndu-presets {
+	margin-top: 8px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.ndu-presets .ndu-preset {
+	font-family: Consolas, Monaco, monospace;
+	font-size: 11px;
+}
+
+.ndu-sidebar {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.ndu-preview-card {
+	position: sticky;
+	top: 46px;
+}
+
+.ndu-about-card p {
+	margin-top: 0;
+	color: #50575e;
+	line-height: 1.5;
+}
+
+.ndu-about-version {
+	margin-bottom: 8px;
+	font-weight: 600;
+	color: #1d2327;
+}
+
+.ndu-about-card p:last-child {
+	margin-bottom: 0;
+}
+
+.ndu-calendar-preview-card .ndu-post-calendar {
+	max-width: 100%;
+	margin: 0;
+}
+
+.ndu-preview-label {
+	margin: 0 0 4px;
+	color: #646970;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.ndu-preview {
+	margin: 0 0 16px;
+	padding: 12px 14px;
+	background: #f6f7f7;
+	border-left: 3px solid #2271b1;
+	font-size: 15px;
+	line-height: 1.5;
+	word-break: break-word;
+}
+
+.ndu-converter-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	align-items: flex-end;
+	margin-bottom: 12px;
+}
+
+.ndu-converter-row label {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	font-weight: 600;
+}
+
+.ndu-converter-result {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+	min-height: 28px;
+}
+
+.ndu-converter-result .ndu-result-text {
+	display: inline-block;
+	padding: 8px 10px;
+	background: #f0f6fc;
+	border-radius: 3px;
+	font-size: 14px;
+	min-width: 12em;
+}
+
+.ndu-converter-result.is-error .ndu-result-text {
+	background: #fcf0f1;
+	color: #b32d2e;
+}
+
+.ndu-token-list,
+.ndu-snippet-list {
+	margin: 0;
+	padding-left: 1.2em;
+}
+
+.ndu-token-list li,
+.ndu-snippet-list li {
+	margin-bottom: 8px;
+	line-height: 1.5;
+}
+
+.ndu-snippet-list code {
+	display: block;
+	margin-bottom: 2px;
+	padding: 6px 8px;
+	background: #f6f7f7;
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.ndu-snippet-list span {
+	color: #646970;
+	font-size: 13px;
+}
+
+@media (max-width: 960px) {
+	.ndu-layout,
+	.ndu-layout.ndu-layout--calendar {
+		grid-template-columns: 1fr;
+	}
+
+	.ndu-preview-card {
+		position: static;
+	}
+}

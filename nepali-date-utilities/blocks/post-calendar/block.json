@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "ndu/post-calendar",
+  "title": "Nepali Post Calendar",
+  "category": "widgets",
+  "icon": "calendar",
+  "description": "Monthly Bikram Sambat calendar with optional post links.",
+  "keywords": ["nepali", "calendar", "bs", "bikram", "posts"],
+  "textdomain": "nepali-date-utilities",
+  "attributes": {
+    "year": {
+      "type": "number"
+    },
+    "month": {
+      "type": "number"
+    },
+    "lang": {
+      "type": "string",
+      "default": "nepali"
+    },
+    "showPostLinks": {
+      "type": "boolean",
+      "default": true
+    },
+    "accentColor": {
+      "type": "string",
+      "default": "#c62828"
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "className": true
+  }
+}
